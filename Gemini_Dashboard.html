@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GMAT Preparation Insights: An Infographic</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F5F5F5;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 400px;
+            }
+        }
+        .kpi-card {
+            background-color: white;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .kpi-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -2px rgb(0 0 0 / 0.1);
+        }
+        .kpi-number {
+            font-size: 3rem;
+            font-weight: 900;
+            line-height: 1;
+            color: #004369;
+        }
+        .flowchart-step {
+            border: 2px solid #01949A;
+            background-color: #ffffff;
+            color: #004369;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            text-align: center;
+            font-weight: 600;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            flex-grow: 1;
+        }
+        .flowchart-arrow {
+            font-size: 2.5rem;
+            color: #DB1F48;
+            line-height: 1;
+            align-self: center;
+            margin: 0.5rem 0;
+        }
+         @media (min-width: 1024px) {
+            .flowchart-arrow {
+                margin: 0 1rem;
+            }
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <header class="bg-[#004369] text-white text-center py-12 px-4">
+        <h1 class="text-4xl md:text-5xl font-black tracking-tight">Navigating the GMAT</h1>
+        <p class="mt-4 text-lg md:text-xl max-w-3xl mx-auto text-gray-200">A Data-Driven Look into the Challenges, Resources, and Strategies for Success in the GMAT Focus Era.</p>
+    </header>
+
+    <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+        <section id="introduction" class="mb-16 text-center">
+            <h2 class="text-3xl font-bold text-[#004369] mb-4">The Landscape Has Shifted</h2>
+            <p class="max-w-4xl mx-auto text-lg text-gray-700">The GMAT has evolved. With the classic edition retired, the GMAT Focus Edition is now the standard, bringing a shorter format, the new Data Insights section, and no geometry. This infographic explores how aspirants are adapting to this new reality, revealing key trends in their preparation journey.</p>
+        </section>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+            
+            <section id="aspirants" class="bg-white rounded-xl shadow-lg p-6 lg:p-8 flex flex-col">
+                <h2 class="text-2xl font-bold text-[#004369] mb-2">The Contenders: Who's Taking the GMAT?</h2>
+                <p class="text-gray-600 mb-6">The GMAT attracts a diverse pool of candidates, primarily split between seasoned professionals seeking career advancement and ambitious students planning their future. Each group brings unique motivations and constraints to the table.</p>
+                <div class="chart-container flex-grow">
+                    <canvas id="aspirantProfileChart"></canvas>
+                </div>
+            </section>
+            
+            <section id="challenges" class="bg-white rounded-xl shadow-lg p-6 lg:p-8 flex flex-col">
+                <h2 class="text-2xl font-bold text-[#004369] mb-2">The Gauntlet: Top Preparation Hurdles</h2>
+                <p class="text-gray-600 mb-6">The path to a high GMAT score is fraught with challenges. Beyond mastering content, aspirants battle time pressure, mental fatigue, and the difficult task of consistently applying learned concepts under exam conditions.</p>
+                <div class="chart-container flex-grow">
+                    <canvas id="challengesRadarChart"></canvas>
+                </div>
+            </section>
+            
+            <section id="resources" class="bg-white rounded-xl shadow-lg p-6 lg:p-8 lg:col-span-2 flex flex-col">
+                <h2 class="text-2xl font-bold text-[#004369] mb-2">The Armory: Ranking the Prep Resources</h2>
+                <p class="text-gray-600 mb-6">Aspirants navigate a crowded marketplace of prep materials. While official guides remain the gold standard, free resources like GMAT Ninja and GMATClub have become cornerstones of study, with paid platforms chosen for specialized strengths.</p>
+                <div class="w-full max-w-4xl mx-auto flex-grow h-[450px] md:h-[500px] relative">
+                    <canvas id="resourceSentimentChart"></canvas>
+                </div>
+            </section>
+
+            <section id="kpis" class="lg:col-span-2 grid grid-cols-1 sm:grid-cols-3 gap-6 my-8">
+                <div class="kpi-card">
+                     <p class="text-lg font-semibold text-gray-600 mb-2">Target for Top Indian B-Schools</p>
+                    <div class="kpi-number">700+</div>
+                    <p class="text-sm text-gray-500 mt-2">(e.g., ISB)</p>
+                </div>
+                <div class="kpi-card">
+                    <p class="text-lg font-semibold text-gray-600 mb-2">Target for M7 US B-Schools</p>
+                    <div class="kpi-number">715+</div>
+                     <p class="text-sm text-gray-500 mt-2">(e.g., Harvard, Wharton)</p>
+                </div>
+                <div class="kpi-card">
+                    <p class="text-lg font-semibold text-gray-600 mb-2">Recommended Work Experience</p>
+                    <div class="kpi-number">3+</div>
+                    <p class="text-sm text-gray-500 mt-2">Years for top global programs</p>
+                </div>
+            </section>
+
+            <section id="strategy" class="bg-white rounded-xl shadow-lg p-6 lg:p-8 lg:col-span-2">
+                <h2 class="text-2xl font-bold text-[#004369] text-center mb-2">The Strategic Blueprint for Success</h2>
+                <p class="text-gray-600 text-center max-w-3xl mx-auto mb-8">Success is not random; it's the result of a structured, iterative process. The most effective GMAT preparation follows a clear path from diagnosis to mastery.</p>
+                <div class="flex flex-col lg:flex-row justify-center items-stretch lg:items-center space-y-4 lg:space-y-0 lg:space-x-4">
+                    <div class="flowchart-step">1. Diagnostic Mock</div>
+                    <div class="flowchart-arrow">→</div>
+                    <div class="flowchart-step">2. Analyze & Identify Weaknesses</div>
+                    <div class="flowchart-arrow">→</div>
+                    <div class="flowchart-step">3. Build Concepts</div>
+                    <div class="flowchart-arrow self-center rotate-90 lg:rotate-0">↓</div>
+                    <div class="flowchart-step">4. Timed Practice & Error Logging</div>
+                     <div class="flowchart-arrow">→</div>
+                    <div class="flowchart-step">5. Full Mocks & Refinement</div>
+                </div>
+            </section>
+            
+            <section id="schools" class="bg-white rounded-xl shadow-lg p-6 lg:p-8 lg:col-span-2 flex flex-col">
+                <h2 class="text-2xl font-bold text-[#004369] mb-2">The Summit: Target Scores for Top B-Schools</h2>
+                <p class="text-gray-600 mb-6">While a holistic profile is crucial, the GMAT score remains a key benchmark for admissions committees. This chart illustrates the competitive GMAT Focus score ranges for different tiers of top-tier business schools.</p>
+                 <div class="w-full max-w-4xl mx-auto flex-grow h-[450px] md:h-[500px] relative">
+                    <canvas id="schoolTargetsChart"></canvas>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <footer class="bg-[#004369] text-white text-center py-8 px-4 mt-12">
+        <p class="font-bold">Your GMAT journey is a marathon, not a sprint.</p>
+        <p class="text-gray-300 mt-2">With the right strategy, resources, and mindset, your target score is within reach.</p>
+    </footer>
+
+    <script>
+        const wrapLabel = (label, maxWidth) => {
+            const words = label.split(' ');
+            let line = '';
+            const lines = [];
+            for (let i = 0; i < words.length; i++) {
+                const testLine = line + words[i] + ' ';
+                if (testLine.length > maxWidth && i > 0) {
+                    lines.push(line.trim());
+                    line = words[i] + ' ';
+                } else {
+                    line = testLine;
+                }
+            }
+            lines.push(line.trim());
+            return lines;
+        };
+        
+        const tooltipTitleCallback = {
+            plugins: {
+                tooltip: {
+                    callbacks: {
+                        title: function(tooltipItems) {
+                            const item = tooltipItems[0];
+                            let label = item.chart.data.labels[item.dataIndex];
+                            return Array.isArray(label) ? label.join(' ') : label;
+                        }
+                    }
+                },
+                legend: {
+                    labels: {
+                        color: '#374151',
+                        font: {
+                           size: 14
+                        }
+                    }
+                }
+            }
+        };
+
+        const vibrantPalette = {
+            blue: '#004369',
+            teal: '#01949A',
+            red: '#DB1F48',
+            beige: '#E5DDC8',
+            lightGray: '#F5F5F5',
+        };
+
+        const ctxAspirant = document.getElementById('aspirantProfileChart');
+        if (ctxAspirant) {
+            new Chart(ctxAspirant, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Working Professionals', 'Students & Freshers'],
+                    datasets: [{
+                        label: 'Aspirant Profile',
+                        data: [65, 35],
+                        backgroundColor: [vibrantPalette.teal, vibrantPalette.blue],
+                        borderColor: vibrantPalette.lightGray,
+                        borderWidth: 4,
+                        hoverOffset: 8
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        ...tooltipTitleCallback.plugins,
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                padding: 20,
+                                color: '#374151',
+                                font: {
+                                   size: 14,
+                                   weight: '600'
+                                }
+                            }
+                        }
+                    },
+                    cutout: '60%'
+                }
+            });
+        }
+        
+        const ctxChallenges = document.getElementById('challengesRadarChart');
+        if (ctxChallenges) {
+            new Chart(ctxChallenges, {
+                type: 'radar',
+                data: {
+                    labels: ['Quant Concepts', 'Verbal Reasoning', ['Data Insights', '(New Section)'], 'Time Management', 'Mental Fatigue'],
+                    datasets: [{
+                        label: 'Perceived Difficulty',
+                        data: [85, 75, 90, 95, 80],
+                        backgroundColor: 'rgba(219, 31, 72, 0.2)',
+                        borderColor: vibrantPalette.red,
+                        borderWidth: 2,
+                        pointBackgroundColor: vibrantPalette.red,
+                        pointBorderColor: '#fff',
+                        pointHoverBackgroundColor: '#fff',
+                        pointHoverBorderColor: vibrantPalette.red
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                     plugins: {
+                        ...tooltipTitleCallback.plugins,
+                        legend: {
+                           display: false
+                        }
+                    },
+                    scales: {
+                        r: {
+                            angleLines: { color: 'rgba(0, 0, 0, 0.1)' },
+                            grid: { color: 'rgba(0, 0, 0, 0.1)' },
+                            pointLabels: {
+                                font: { size: 14, weight: '600' },
+                                color: vibrantPalette.blue
+                            },
+                            ticks: {
+                                backdropColor: 'transparent',
+                                color: '#6b7280',
+                                stepSize: 20
+                            },
+                            suggestedMin: 0,
+                            suggestedMax: 100
+                        }
+                    }
+                }
+            });
+        }
+        
+        const ctxResources = document.getElementById('resourceSentimentChart');
+        if (ctxResources) {
+            const resourceLabels = ['GMATClub Forum', 'GMAT Ninja (YouTube)', 'Official Guides (mba.com)', 'Target Test Prep (TTP)', 'e-GMAT', 'Manhattan Prep'];
+            new Chart(ctxResources, {
+                type: 'bar',
+                data: {
+                    labels: resourceLabels.map(label => wrapLabel(label, 16)),
+                    datasets: [{
+                        label: 'Positive Mentions & Recommendations',
+                        data: [95, 92, 88, 70, 65, 60],
+                        backgroundColor: [
+                            vibrantPalette.blue,
+                            vibrantPalette.blue,
+                            vibrantPalette.blue,
+                            vibrantPalette.teal,
+                            vibrantPalette.teal,
+                            vibrantPalette.teal,
+                        ],
+                        borderColor: vibrantPalette.blue,
+                        borderWidth: 1,
+                        borderRadius: 5
+                    }]
+                },
+                options: {
+                    indexAxis: 'y',
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        ...tooltipTitleCallback.plugins,
+                        legend: {
+                           display: false
+                        }
+                    },
+                    scales: {
+                        x: {
+                            beginAtZero: true,
+                            grid: {
+                                drawOnChartArea: false
+                            },
+                             ticks: { color: '#374151' }
+                        },
+                        y: {
+                            grid: {
+                                color: 'rgba(0, 0, 0, 0.05)'
+                            },
+                            ticks: { 
+                                color: '#374151',
+                                font: {
+                                    weight: '600'
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        const ctxSchools = document.getElementById('schoolTargetsChart');
+        if (ctxSchools) {
+            const schoolLabels = ['ISB, SPJIMR (India)', ['M7 Schools', '(e.g., HBS, Stanford)'], ['Top European Schools', '(e.g., INSEAD, HEC)'], ['Top 15 US Schools', '(e.g., Cornell, Duke)']];
+            new Chart(ctxSchools, {
+                type: 'bar',
+                data: {
+                    labels: schoolLabels,
+                    datasets: [
+                        {
+                            label: 'Competitive Score (Minimum)',
+                            data: [685, 705, 695, 680],
+                            backgroundColor: vibrantPalette.teal,
+                            borderRadius: 5,
+                        },
+                        {
+                            label: 'Target Score (Ideal)',
+                            data: [715, 735, 725, 710],
+                            backgroundColor: vibrantPalette.blue,
+                            borderRadius: 5,
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        ...tooltipTitleCallback.plugins,
+                         legend: {
+                            position: 'top',
+                            align: 'end',
+                            labels: {
+                                padding: 20,
+                                usePointStyle: true,
+                                boxWidth: 8
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: false,
+                            min: 600,
+                            grid: {
+                                color: 'rgba(0, 0, 0, 0.05)'
+                            },
+                            ticks: { 
+                                color: '#374151',
+                                font: {
+                                    weight: '600'
+                                }
+                            },
+                            title: {
+                                display: true,
+                                text: 'GMAT Focus Edition Score',
+                                font: {
+                                    size: 14
+                                },
+                                color: '#4b5563'
+                            }
+                        },
+                        x: {
+                             grid: {
+                                drawOnChartArea: false
+                            },
+                            ticks: { color: '#374151' }
+                        }
+                    }
+                }
+            });
+        }
+    </script>
+
+</body>
+</html>
